@@ -1,0 +1,11 @@
+language: 'ruby'
+
+artifacts:
+  prefix: "artifacts/{{build_number}}/{{job_number}}"
+  artifacts:
+    - 'screenshots'
+    - 'logs'
+  on_failure:
+    - 'debug'
+  on_success:
+    - 'build'
