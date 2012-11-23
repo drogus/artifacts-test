@@ -9,3 +9,14 @@ artifacts:
     - 'debug'
   on_success:
     - 'build'
+
+env:
+  global:
+    - 'ARTIFACTS_AWS_REGION=us-east-1'
+    - 'ARTIFACTS_S3_BUCKET=drogus-artifacts'
+
+before_script:
+  - "export `curl -s https://raw.github.com/gist/4126639/travis-encrypt.rb | ruby -- "" decrypt -d .encrypted-vars`"
+
+after_test:
+  - 'sh < <(curl -s https://raw.github.com/gist/4089736/artifacts.sh)'
