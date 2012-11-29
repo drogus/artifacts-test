@@ -8,7 +8,7 @@ env:
 
 before_script:
   - 'export `curl -s https://raw.github.com/gist/4126639/travis-encrypt.rb | ruby -- "" decrypt -d .encrypted-vars`'
-  - 'sh < <(curl -s https://raw.github.com/gist/4089736/install-artifacts.sh)'
+  - 'bash < <(curl -s https://raw.github.com/gist/4089736/install-artifacts.sh)'
 
 after_test:
   - "travis-artifacts upload --path screenshots --path logs"
