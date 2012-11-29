@@ -1,15 +1,5 @@
 language: 'ruby'
 
-artifacts:
-  prefix: "artifacts/{{build_number}}/{{job_number}}"
-  artifacts:
-    - 'screenshots'
-    - 'logs'
-  on_failure:
-    - 'debug'
-  on_success:
-    - 'build'
-
 env:
   global:
     - 'ARTIFACTS_AWS_REGION=us-east-1'
@@ -18,6 +8,11 @@ env:
 
 before_script:
   - 'export `curl -s https://raw.github.com/gist/4126639/travis-encrypt.rb | ruby -- "" decrypt -d .encrypted-vars`'
+  - 'sh < <(curl -s https://raw.github.com/gist/4089736/install-artifacts.sh)'
 
 after_test:
-  - 'sh < <(curl -s https://raw.github.com/gist/4089736/artifacts.sh)'
+  - "travis-artifacts upload --path screenshots --path logs"
+after_failure:
+  - "travis-artifacts upload --path debug"
+after_success:
+  - "travis-artifacts upload --path build"
