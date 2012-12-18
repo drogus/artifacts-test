@@ -4,13 +4,13 @@ env:
   global:
     - 'ARTIFACTS_AWS_REGION=us-east-1'
     - 'ARTIFACTS_S3_BUCKET=drogus-artifacts'
-    - secure: "pY4vu9rgAsBxrytcoIqzogEFhwoHGU0QwNjyMUHWv0mwtayEbhd3gr8xd5a3\nuxcDXOIy/tS1epU+W8fmWz85FgRIaHGhUt+7YHtyAfFcgaCZp/IcywWfXXBm\nT1ear0yWY+8ZCygTRU6+8Di7BFB5436Mdmtv2uYT4x1x98NZcpQ="
+    - secure: "Ty2niXJaugen5EbfDaJlHEQk1KlTfFlDHaMJ/V8WZp+6p/2g+7hcn2vGXKIE\nqnQjHS+/fJQqG1RsAlunb0c6MLbDKEi/5MZ9GOROsVtby++RX4F/memChnHE\nHuycPWjIVoUPrygZysTjfd5qVMO/V69bNIBVqYGea7qhUst18lw="
 
 before_script:
   - 'export `curl -s https://raw.github.com/gist/4126639/travis-encrypt.rb | ruby -- "" decrypt -d .encrypted-vars`'
-  - 'bash < <(curl -s https://raw.github.com/gist/4089736/install-artifacts.sh)'
+  - "gem install travis-artifacts"
 
-after_test:
+after_script:
   - "travis-artifacts upload --path screenshots --path logs"
 after_failure:
   - "travis-artifacts upload --path debug"
