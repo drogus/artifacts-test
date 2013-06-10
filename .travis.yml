@@ -15,6 +15,8 @@ env:
     - secure: "Un/nTZp7bEoxAuVLUBClFaTNMRqY585ig1rHM7+/FolDB/g2HCnDlunQ8O8W\n92gun3+3NFUs1zczCXCoRaFOe5we14gU3ElxH15XwjzpOZ4XNy1iluanJ18o\ny9f2/X8eJvOXGTHyNy1hghdduDQnHh6c9O7Ax5D0x7vlU/OV76M="
     - secure: "dzX4r49qRQIMgXlMNXfUXhiXb6cG0rs1aQLKZCHqXkWwbwWHFcLlyQjIGFuT\nl24tBg/kKZrSKNW+gpIly3ISxJiSlWhNjMx2xGc+3yhYQPexHMk01lN6qtap\nGiVPnO1MZCtDHt111yAD3HjGs8t+0Glmsm3DL/ASv+nZSbyV6mQ="
 
+before_install:
+  - env
 before_script:
   - "curl https://gist.github.com/drogus/4089736/raw/install-artifacts.sh | bash"
 
