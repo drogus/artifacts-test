@@ -16,7 +16,7 @@ env:
     - secure: "dzX4r49qRQIMgXlMNXfUXhiXb6cG0rs1aQLKZCHqXkWwbwWHFcLlyQjIGFuT\nl24tBg/kKZrSKNW+gpIly3ISxJiSlWhNjMx2xGc+3yhYQPexHMk01lN6qtap\nGiVPnO1MZCtDHt111yAD3HjGs8t+0Glmsm3DL/ASv+nZSbyV6mQ="
 
 before_script:
-  - "curl https://gist.github.com/raw/4089736/install-artifacts.sh | bash"
+  - "curl https://gist.github.com/drogus/4089736/raw/install-artifacts.sh | bash"
 
 after_script:
   - "travis-artifacts upload --path screenshots --path logs"
